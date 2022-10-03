@@ -1,0 +1,9 @@
+node_modules
+*.log
+.next
+app
+dist
+yarn.lock
+package.lock
+test/res/*
+configuration.json

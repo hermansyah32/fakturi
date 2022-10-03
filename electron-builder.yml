@@ -1,0 +1,13 @@
+appId: dev.hermansyah.fakturi
+productName: Fakturi
+copyright: Hermansyah
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null
+extraResources: ["templates/*"]
