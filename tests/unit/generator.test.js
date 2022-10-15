@@ -15,7 +15,6 @@ describe("generate testing", async () => {
   it.skip("can read file", async () => {
     try {
       const generate = await Generator.preparationData(generateProp);
-      console.log('generate :>> ', generate);
       expect(generate.status).true;
 
       if (generate.status === false) throw new Error(generate.error);

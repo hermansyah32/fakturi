@@ -15,7 +15,7 @@ export let MAX_PROGRESS = 10;
  * @param {Company} company Current company
  * @param {GenerateProperties} properties Generate properties
  * @param {string} outputFolder Output folder
- * @param {number} previousProgress Previous progress 
+ * @param {number} previousProgress Previous progress
  */
 const convert = (
   dataBook,
@@ -52,9 +52,9 @@ const convert = (
       F: properties.year,
       G: dayjs(properties.date, "YYYY/MM/DD").format("DD/MM/YYYY"),
       H: dataCustomer.taxIdentity ?? "000000000000000",
-      I:
-        dataCustomer.nationalIdentity ??
-        `${dataCustomer.nationalIdentity}#NIK#NAMA#${dataCustomer.name}`,
+      I: !dataCustomer.nationalIdentity
+        ? dataCustomer.name
+        : `${dataCustomer.nationalIdentity}#NIK#NAMA#${dataCustomer.name}`,
       J: dataCustomer.address ?? "-",
       K: Math.floor(dataCustomer.totalTaxBasis, 1, 2),
       L: Math.floor(dataCustomer.totalVAT, 1, 2),
@@ -97,7 +97,7 @@ const convert = (
 /**
  * Write sheet json to excel file
  * @param {object[]} sheetJson Sheet json
- * @param {string} outputFolder Output folder 
+ * @param {string} outputFolder Output folder
  */
 const writeToExcel = async (sheetJson, outputFolder) => {
   const XLSX = require("xlsx");

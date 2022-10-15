@@ -25,7 +25,6 @@ function Home() {
   const messageDialogRef = useRef();
 
   const progressHandler = (evt, data) => {
-    console.log("data :>> ", data);
     if (data.progress == 100) {
       setTimeout(() => {
         progressDialogRef.current.closeDialog();
