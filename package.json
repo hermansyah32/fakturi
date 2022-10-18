@@ -17,7 +17,7 @@
     "cmd": "node -r @babel/register"
   },
   "dependencies": {
-    "@headlessui/react": "^1.6.0",
+    "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^1.0.6",
     "c-promise2": "^0.13.12",
     "cleave.js": "^1.6.0",
