@@ -72,7 +72,7 @@ class DataBook {
   /**
    * Add data customer to data book
    * @param {string} custName Customer name. Customer name is not case sensitive
-   * @param {CustItem} custItem Customer item
+   * @param {CustomerItem} custItem Customer item
    */
   addData(custName, custItem) {
     if (!this.data.get(custName)) return;
@@ -88,7 +88,7 @@ class DataBook {
    * Merge customer item to data customer
    * @param {string} custName Customer name. Customer name is not case sensitive
    * @param {number} index Customer item index
-   * @param {CustItem} newCustItem New customer item.
+   * @param {CustomerItem} newCustItem New customer item.
    */
   mergeData(custName, index, newCustItem) {
     if (!this.data.get(custName)) return;
