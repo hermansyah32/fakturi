@@ -11,6 +11,7 @@ export class Company {
     this.Counted = "Default";
     this.Invoice = "Default";
     this.Ordered = "Default";
+    this.Degenerator = "Default";
     this.Transaction = "Default";
     this.Import = "Default";
   }

@@ -5,6 +5,7 @@ import Link from "next/link";
 const navigation = [
   { name: "Beranda", href: "/home", id: "home" },
   { name: "Pengaturan", href: "/settings", id: "settings" },
+  { name: "Peralatan", href: "/tools", id: "tools" },
 ];
 
 function classNames(...classes) {

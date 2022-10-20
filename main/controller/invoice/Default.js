@@ -52,7 +52,7 @@ const convert = async (
   placement.TAX_TARIFF = localConfiguration.get("taxTariff");
   placement.INVOICE_MONTH = properties.month;
   placement.INVOICE_YEAR = properties.year;
-  placement.INVOICE_DATE = dayjs(properties.tanggal, "YYYY/MM/DD").format(
+  placement.INVOICE_DATE = dayjs(properties.date, "YYYY/MM/DD").format(
     "DD-MM-YYYY"
   );
 
@@ -112,7 +112,7 @@ const convert = async (
         100,
         `Menulis invoice pelanggan ke ${invoiceNumber} dari ${dataBook.data.size}`
       );
-      
+
       writeToHtml(
         baseHtml,
         outputFolder + `/invoice-html/${tempPlaceMent.CLIENT_NAME}.html`

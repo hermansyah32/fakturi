@@ -9,6 +9,13 @@ let sheet = {
     }
     return value;
   },
+  /** @return {Number|null} */
+  cellNumber: (value) => {
+    if (typeof value === undefined) {
+      value = null;
+    }
+    return Number(value);
+  },
   safeValue: (value) => {
     if (typeof value !== "string") {
       value = value.toString();
@@ -202,11 +209,8 @@ let path = {
     return xPath.resolve(pathData.join(xPath.sep));
   },
   getAppPath: () => {
-    if (isProd) {
-      return xPath.dirname(app.getAppPath());
-    } else {
-      return xPath.join(process.cwd(), "/app");
-    }
+    if (isProd) return xPath.dirname(app.getAppPath());
+    return xPath.join(process.cwd(), "/app");
   },
 };
 

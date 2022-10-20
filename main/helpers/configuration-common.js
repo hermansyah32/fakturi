@@ -33,9 +33,6 @@ export const LocalConfig = () => {
   try {
     if (!app) throw new Error("app is not available");
     _configFile = Transform.path.getAppPath() + "/configuration.json";
-    if (isProd)
-      _configFile = Transform.path.getAppPath() + "/configuration.json";
-    else _configFile = Transform.path.getAppPath() + "/configuration.json";
     if (!existsSync(_configFile)) {
       DEFAULT_CONFIG.configOutput = path.resolve(
         getDesktopFolder() + "/" + DEFAULT_CONFIG.companyName

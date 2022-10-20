@@ -1,6 +1,7 @@
 // import { LocalConfig } from "../helpers/configuration-common";
 import { LocalConfig } from "../helpers/configuration-common";
 import * as Generator from "../controller/generate";
+import * as Degenerator from "../controller/degenerate";
 
 let generatePromise = null;
 let mainWindow = null;
@@ -98,6 +99,60 @@ export const IPCMainHandler = (ipcMain, dialog) => {
         generate.properties,
         generate.outputFolder,
         processImport.PREV_PROGRESS
+      );
+      IPCRendererHandler().sendProgress(100, 100, `Selesai`);
+    } catch (error) {
+      console.log("error :>> ", error);
+      // TODO: log here
+      IPCRendererHandler().sendProgress(
+        100,
+        100,
+        `Terjadi kesalahan: ${error.message}`
+      );
+    }
+  });
+
+  /**
+   * Degenerate Import file
+   */
+  ipcMain.handle("degenerateProcess", async (event, data) => {
+    const degenerateProp = data;
+
+    try {
+      const degenerate = await Degenerator.preparationData(degenerateProp);
+      const processData = await Degenerator.processDataBook(
+        degenerate.sheetRow,
+        degenerate.company,
+        degenerate.properties,
+        degenerate.outputFolder
+      );
+      const processCounted = await Degenerator.processCounted(
+        processData.dataBook,
+        degenerate.company,
+        degenerate.properties,
+        degenerate.outputFolder,
+        processData.PREV_PROGRESS
+      );
+      const processOrdered = await Degenerator.processOrdered(
+        processData.orderedDataBook,
+        degenerate.company,
+        degenerate.properties,
+        degenerate.outputFolder,
+        processCounted.PREV_PROGRESS
+      );
+      const processTransaction = await Degenerator.processTransaction(
+        processData.orderedDataBook,
+        degenerate.company,
+        degenerate.properties,
+        degenerate.outputFolder,
+        processOrdered.PREV_PROGRESS
+      );
+      const processInvoice = await Degenerator.processInvoice(
+        processData.orderedDataBook,
+        degenerate.company,
+        degenerate.properties,
+        degenerate.outputFolder,
+        processTransaction.PREV_PROGRESS
       );
       IPCRendererHandler().sendProgress(100, 100, `Selesai`);
     } catch (error) {

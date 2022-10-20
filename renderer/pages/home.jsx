@@ -1,3 +1,4 @@
+import React from "react";
 import electron from "electron";
 import { Fragment, useEffect, useRef } from "react";
 import Head from "next/head";
@@ -74,7 +75,7 @@ function Home() {
         <ProgressDialog title="Mengkonversi file" ref={progressDialogRef} />
         <MessageDialog ref={messageDialogRef} />
       </Content>
-      <Footer></Footer>
+      <Footer/>
     </Fragment>
   );
 }
