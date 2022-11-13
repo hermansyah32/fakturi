@@ -58,6 +58,7 @@ class DataBook {
    * @param {DataCustomer} dataCust Data customer
    */
   addCustomer(dataCust) {
+    if (this.data.get(dataCust.name)) return;
     this.data.set(dataCust.name, dataCust);
   }
 
